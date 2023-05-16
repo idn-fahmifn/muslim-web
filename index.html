@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Muslim Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'LPMQ';
+            src: url('https://kangismet.github.io/fonts/lpmq.eot');
+            src: url('https://kangismet.github.io/fonts/lpmq.eot?#iefix') format('embedded-opentype'),
+                url('https://kangismet.github.io/fonts/lpmq.ttf') format('truetype');
+            font-weight: 400;
+            font-weight: normal;
+            font-display: swap;
+        }
+
+        .arab {
+            font-size: 26px;
+            line-height: 48px;
+            font-family: LPMQ, "Traditional Arabic", Tahoma, sans-serif;
+            font-weight: normal;
+            direction: rtl;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mosleem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Murotal Al Quran</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Jadwal Sholat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Asmaul Husna</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="asmaul-husna" id="asmaul-husna">
+        <div class="container">
+            <div class="row d-flex flex-row-reverse" id="list-asmaul-husna">
+            </div>
+        </div>
+    </section>
+
+    <section class="jadwal-sholat mt-4">
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <div class="row text-white">
+                        <h5 class="card-title text-white d-flex justify-content-center mt-4">Jadwal Sholat</h5>
+                        <p class="fw-bold text-wh">Kota/Lokasi : <span class="fw-normal" id="city">test</span></p>
+                        <p class="fw-bold text-wh">Provinsi/Daerah : <span class="fw-normal" id="prov">test</span></p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-primary">
+                                <th>Tanggal</th>
+                                <th>Imsak</th>
+                                <th>Subuh</th>
+                                <th>Terbit</th>
+                                <th>Dzuhur</th>
+                                <th>Ashar</th>
+                                <th>Maghrib</th>
+                                <th>Isya</th>
+                            </thead>
+                            <tbody id="list-jadwal">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quran">
+        <div class="container">
+            <div class="row p-4" id="alquran">
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="api.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

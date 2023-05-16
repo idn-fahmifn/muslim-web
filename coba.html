@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 20px;
+		}
+		
+		h1 {
+			text-align: center;
+		}
+		
+		table {
+			margin: auto;
+			border-collapse: collapse;
+		}
+		
+		th, td {
+			padding: 10px;
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+		
+		th {
+			background-color: #eee;
+		}
+		
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+	</style>
+
+</head>
+
+<body>
+
+    <h1>Jadwal Sholat</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Waktu Sholat</th>
+                <th>Jam</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fajr</td>
+                <td id="fajr"></td>
+            </tr>
+            <tr>
+                <td>Sunrise</td>
+                <td id="sunrise"></td>
+            </tr>
+            <tr>
+                <td>Dhuhr</td>
+                <td id="dhuhr"></td>
+            </tr>
+            <tr>
+                <td>Asr</td>
+                <td id="asr"></td>
+            </tr>
+            <tr>
+                <td>Maghrib</td>
+                <td id="maghrib"></td>
+            </tr>
+            <tr>
+                <td>Isha</td>
+                <td id="isha"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <script>
+        const country = 'Indonesia';
+        const city = "Jakarta";
+        const today = new Date();
+
+        let day = today.getDate();
+        let month = today.getMonth()+1;
+        let year = today.getFullYear();
+
+        let result = `${day}-${month}-${year}`
+
+
+        const url = `https://api.aladhan.com/v1/timingsByCity/${result}?city=${city}&country=${country}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const timings = data.data.timings;
+                console.log("Fajr: " + timings.Fajr);
+                console.log("Dhuhr: " + timings.Dhuhr);
+                console.log("Asr: " + timings.Asr);
+                console.log("Maghrib: " + timings.Maghrib);
+                console.log("Isha: " + timings.Isha);
+
+                document.getElementById("fajr").innerText = timings.Fajr;
+                document.getElementById("sunrise").innerText = timings.Sunrise;
+                document.getElementById("dhuhr").innerText = timings.Dhuhr;
+                document.getElementById("asr").innerText = timings.Asr;
+                document.getElementById("maghrib").innerText = timings.Maghrib;
+                document.getElementById("isha").innerText = timings.Isha;
+
+            })
+            .catch(error => console.log("Error: " + error));
+    </script>
+</body>
+
+</html>
